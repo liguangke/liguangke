@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: consumer-service-service
+spec:
+  selector:
+    app: consumer-service
+  ports:
+    - protocol: TCP
+      port: 8082  # 对外暴露的端口
+      targetPort: 8082  # 容器内部的端口
+  type: LoadBalancer

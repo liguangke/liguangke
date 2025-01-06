@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: eureka-server
+server:
+  port: 7002
+
+eureka:
+  client:
+    #eureka server的地址，所有服务向这个地址中注册
+    service-url:
+      #集群配置
+      defaultZone: http://127.0.0.1:7001/,http://127.0.0.1:7003/
+    #是否向注册中心注册自己
+    register-with-eureka: true
+    #声明自己是不是注册中心，是用false，不是用true
+    fetch-registry: true
+  instance:
+    hostname: eureka-peer2

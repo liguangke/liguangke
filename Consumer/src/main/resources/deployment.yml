@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: consumer-service-deployment
+spec:
+  replicas: 3  # 部署三个副本
+  selector:
+    matchLabels:
+      app: consumer-service
+  template:
+    metadata:
+      labels:
+        app: consumer-service
+    spec:
+      containers:
+        - name: consumer-service-container
+          image: consumer-service:v1
+          ports:
+            - containerPort: 8082

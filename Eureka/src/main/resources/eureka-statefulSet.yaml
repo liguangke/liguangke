@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: eureka-server
+  labels:
+    service: eureka-server
+spec:
+  replicas: 3
+  serviceName: eureka-server
+  selector:
+    matchLabels:
+      service: eureka-server
+  template:
+    metadata:
+      labels:
+        service: eureka-server
+      annotations:
+        service: eureka-server
+    spec:
+      containers:
+        - name: eureka-server
+          image: harbor.int.xxx-inc.com/eureka/eureka
+          imagePullPolicy: Always
+          env:
+            - name: MY_POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+          ports:
+            - name: http
+              containerPort: 8000
+              protocol: TCP
+          resources:
+            requests:
+              memory: "100Mi"
+              cpu: "1"
+            limits:
+              memory: "4Gi"
+              cpu: "2"
+          livenessProbe:
+            tcpSocket:
+              port: 8000
+            failureThreshold: 3
+            initialDelaySeconds: 30
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8001
+              scheme: HTTP
+            failureThreshold: 3
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 10
