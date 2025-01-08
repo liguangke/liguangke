@@ -25,7 +25,7 @@ public class ProducerController {
      *
      * @return
      */
-    @PostMapping("/restProduce")
+    @RequestMapping("/restProduce")
     public String restProduce() {
         return restTemplate.getForObject("http://consumer-service/" + "test", String.class);
     }
@@ -34,7 +34,7 @@ public class ProducerController {
      *
      * @return
      */
-    @PostMapping("/rest")
+    @RequestMapping("/rest")
     public String rest() {
         return "success";
     }

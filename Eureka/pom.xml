@@ -63,7 +63,6 @@
                 <version>${spring-boot.version}</version>
                 <configuration>
                     <mainClass>com.example.eureka.EurekaApplication</mainClass>
-                    <skip>true</skip>
                 </configuration>
                 <executions>
                     <execution>

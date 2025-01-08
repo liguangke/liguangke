@@ -1,22 +1,19 @@
-FROM openjdk:8-jdk
-COPY target/Consumer-0.0.1-SNAPSHOT.jar /temp
-WORKDIR /temp
-CMD java -jar Consumer-0.0.1-SNAPSHOT.jar
+#FROM openjdk:17
+#COPY target/Eureka-0.0.1-SNAPSHOT.jar /temp
+#WORKDIR /temp
+#CMD java -jar Eureka-0.0.1-SNAPSHOT.jar
+FROM openjdk:8
+# 设置工作目录
+WORKDIR /app
 
-#FROM openjdk:8-jdk-alpine
-#COPY target/Consumer-0.0.1-SNAPSHOT.jar consumer.jar
-#ENTRYPOINT ["java", "-jar", "/consumer.jar"]
-# 基础镜像
-#FROM openjdk:8-jdk-alpine
-#
-## 指定维护者信息
-#LABEL maintainer="yourname@example.com"
-#
-## 添加文件到容器
-#ADD target/Consumer-0.0.1-SNAPSHOT.jar.jar /app.jar
-#
-## 暴露端口
-#EXPOSE 8080
-#
-## 运行时执行的命令
-#CMD ["java", "-jar", "/app.jar"]
+# 将本地的JAR包复制到容器的/app目录下
+COPY Consumer-0.0.1-SNAPSHOT.jar /app/Consumer-0.0.1-SNAPSHOT.jar
+
+# 设置环境变量，指定JAR包名
+ENV JAR_FILE=Consumer-0.0.1-SNAPSHOT.jar
+
+# 暴露应用的端口（根据你的应用需要修改）
+EXPOSE 8082
+
+# 启动命令
+ENTRYPOINT ["java", "-jar", "/app/Consumer-0.0.1-SNAPSHOT.jar"]

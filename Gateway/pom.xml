@@ -67,7 +67,6 @@
                 <version>${spring-boot.version}</version>
                 <configuration>
                     <mainClass>com.example.gateway.GatewayApplication</mainClass>
-                    <skip>true</skip>
                 </configuration>
                 <executions>
                     <execution>
