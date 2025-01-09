@@ -12,13 +12,14 @@ spring:
 
 eureka:
   instance:
-    ip-address: 172.16.79.29
+    ip-address: ${CONSUMER_SERVICE_IP:127.0.0.1}
     prefer-ip-address: true
   client:
     service-url:
 #      defaultZone: http://127.0.0.1:7001/eureka/,http://127.0.0.1:7002/eureka/,http://127.0.0.1:7003/eureka/
 #      defaultZone: ${eureka.instance.hostname:http://127.0.0.1:7001/eureka/}
-      defaultZone: http://172.16.223.28:7001/eureka/
+#      defaultZone: http://172.16.197.116:7001/eureka/
+      defaultZone: ${EUREKA_SERVICE_URL:http://127.0.0.1:7001/eureka/}
 #      defaultZone: http://127.0.0.1:7001/eureka/
     instance-id: consumer-service-01
 

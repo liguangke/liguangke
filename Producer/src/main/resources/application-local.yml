@@ -1,31 +1,24 @@
 server:
-  port: 8080
+  port: 8081
 
 spring:
   application:
-    name: gateway-service
-  cloud:
-    gateway:
-      discovery:
-        locator:
-          enabled: true
-          lower-case-service-id: true
-      routes:
-        - id: discovery
-          uri: lb://producer-service
-          predicates:
-            - Path=/producer/**
+    name: producer-service
+#  rabbitmq:
+#    host: rabbitmq
+#    port: 5672
+#    username: guest
+#    password: guest
 
 eureka:
   instance:
-    ip-address: 172.16.228.20
+    ip-address: ${PRODUCER_SERVICE_IP:127.0.0.1}
     prefer-ip-address: true
   client:
     service-url:
       #      defaultZone: http://127.0.0.1:7001/eureka/,http://127.0.0.1:7002/eureka/,http://127.0.0.1:7003/eureka/
       #      defaultZone: ${eureka.instance.hostname:http://127.0.0.1:7001/eureka/}
 #      defaultZone: http://172.16.197.116:7001/eureka/
-      defaultZone: http://172.16.223.28:7001/eureka/
+       defaultZone: ${EUREKA_SERVICE_URL:http://127.0.0.1:7001/eureka/}
 #      defaultZone: http://127.0.0.1:7001/eureka/
-    instance-id: gateway-service-01
-   
+    instance-id: producer-service-01
