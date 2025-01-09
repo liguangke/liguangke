@@ -4,6 +4,12 @@ server:
 spring:
   application:
     name: consumer-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848 #配置Nacos地址
+    #   ip: 172.16.79.29
+
 #  rabbitmq:java
 #    host: rabbitmq
 #    port: 5672

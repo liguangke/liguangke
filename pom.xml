@@ -55,7 +55,6 @@
                 <version>${spring-boot.version}</version>
                 <configuration>
                     <mainClass>com.example.springcloudk8s.SpringCloudK8sApplication</mainClass>
-                    <skip>true</skip>
                 </configuration>
                 <executions>
                     <execution>

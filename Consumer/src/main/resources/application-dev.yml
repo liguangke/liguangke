@@ -1,0 +1,14 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: consumer-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.0.248:8848 #配置Nacos地址
+#        ip: 172.16.79.29
+
+
+   

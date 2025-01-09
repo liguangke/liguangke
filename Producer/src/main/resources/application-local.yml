@@ -4,6 +4,10 @@ server:
 spring:
   application:
     name: producer-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848 #配置Nacos地址
 #  rabbitmq:
 #    host: rabbitmq
 #    port: 5672

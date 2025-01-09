@@ -1,0 +1,11 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: producer-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.0.248:8848 #配置Nacos地址
+    #   ip: 172.16.90.215

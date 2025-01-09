@@ -4,28 +4,6 @@ server:
 spring:
   application:
     name: gateway-service
-  cloud:
-    gateway:
-      discovery:
-        locator:
-          enabled: true
-          lower-case-service-id: true
-      routes:
-        - id: discovery
-          uri: lb://producer-service
-          predicates:
-            - Path=/producer/**
-
-eureka:
-  instance:
-    ip-address: 172.16.228.20
-    prefer-ip-address: true
-  client:
-    service-url:
-      #      defaultZone: http://127.0.0.1:7001/eureka/,http://127.0.0.1:7002/eureka/,http://127.0.0.1:7003/eureka/
-      #      defaultZone: ${eureka.instance.hostname:http://127.0.0.1:7001/eureka/}
-#      defaultZone: http://172.16.197.116:7001/eureka/
-      defaultZone: http://172.16.223.28:7001/eureka/
-#      defaultZone: http://127.0.0.1:7001/eureka/
-    instance-id: gateway-service-01
-   
+  profiles:
+#    active: local
+      active: dev
