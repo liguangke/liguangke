@@ -7,8 +7,8 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 192.168.0.248:8848 #配置Nacos地址
-#        ip: 172.16.79.29
+        server-addr: ${NACOS_ADDR:192.168.0.248:8848} #配置Nacos地址
+        ip: ${CONSUMER_IP:172.16.180.9}
 
 
    
