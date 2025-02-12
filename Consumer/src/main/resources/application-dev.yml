@@ -9,6 +9,11 @@ spring:
       discovery:
         server-addr: ${NACOS_ADDR:192.168.0.248:8848} #配置Nacos地址
         ip: ${CONSUMER_IP:172.16.180.9}
+  redis:
+    host: ${REDIS_HOST:r-bp1hei54wl37fgzfzzpd.redis.rds.aliyuncs.com}
+    port: ${REDIS_PORT:6379}
+    password: ${REDIS_PASSWORD:18133335015@Li}
+    timeout: 10000ms
 
 
-   
+    

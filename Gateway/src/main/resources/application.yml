@@ -16,7 +16,11 @@ spring:
           enabled: true
           lower-case-service-id: true
       routes:
-        - id: discovery
+        - id: producer
           uri: lb://producer-service
           predicates:
             - Path=/producer/**
+        - id: consumer
+          uri: lb://consumer-service
+          predicates:
+            - Path=/consumer/**

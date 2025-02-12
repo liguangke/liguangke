@@ -14,22 +14,34 @@
         <spring-boot.version>2.6.13</spring-boot.version>
         <spring-cloud.version>2021.0.5</spring-cloud.version>
         <spring-cloud-alibaba.version>2.2.6.RELEASE</spring-cloud-alibaba.version>
+        <rocketmq.version>5.0.7</rocketmq.version>
+        <schedulerx2.version>1.12.3</schedulerx2.version>
+        <jedis.version>4.3.0</jedis.version>
+        <arms-sdk.version>1.7.3</arms-sdk.version>
     </properties>
 
 
     <dependencies>
         <dependency>
+            <groupId>com.alibaba.arms.apm</groupId>
+            <artifactId>arms-sdk</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.aliyun.schedulerx</groupId>
+            <artifactId>schedulerx2-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-amqp</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.apache.rocketmq</groupId>
+            <artifactId>rocketmq-client-java</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -56,6 +68,41 @@
     </dependencies>
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>com.alibaba.arms.apm</groupId>
+                <artifactId>arms-sdk</artifactId>
+                <version>${arms-sdk.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>${jedis.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.aliyun.schedulerx</groupId>
+                <artifactId>schedulerx2-spring-boot-starter</artifactId>
+                <version>${schedulerx2.version}</version>
+                <!--如果使用logback，需要将log4j和log4j2排除 -->
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.apache.logging.log4j</groupId>
+                        <artifactId>log4j-api</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.apache.logging.log4j</groupId>
+                        <artifactId>log4j-core</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>log4j</groupId>
+                        <artifactId>log4j</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.rocketmq</groupId>
+                <artifactId>rocketmq-client-java</artifactId>
+                <version>${rocketmq.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>

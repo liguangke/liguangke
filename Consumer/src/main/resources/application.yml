@@ -1,12 +1,39 @@
 server:
   port: 8082
+  servlet:
+    context-path: /consumer
 
 spring:
+  schedulerx2:
+    endpoint: ${SCHEDULERX2_ENDPOINT:acm.aliyun.com}
+    namespace: ${SCHEDULERX2_NAMESPACE:910cd2ce-43a7-4e78-85cc-e241f7a9087b}
+    groupId: ${SCHEDULERX2_GROUPID:spring-boot-k8s}
+    appKey: ${SCHEDULERX2_APPKEY:ibpFbcF1SYU5mQcel7brZ1A}
   application:
     name: consumer-service
   cloud:
     nacos:
       discovery:
-        server-addr: 127.0.0.1:8848 #配置Nacos地址
-#        server-addr: ${NACOS_ADDR:192.168.0.248:8848} #配置Nacos地址
+        server-addr: ${NACOS_ADDR:127.0.0.1:8848} #配置Nacos地址
+        # 指定自身地址
 #        ip: ${CONSUMER_IP:172.16.180.9}
+  redis:
+    host: ${REDIS_HOST:r-bp1hei54wl37fgzfzzpd.redis.rds.aliyuncs.com}
+    port: ${REDIS_PORT:6379}
+    password: ${REDIS_PASSWORD:18133335015@Li}
+    timeout: 3000
+    jedis:
+      pool:
+        max-idle: 200
+        max-active: 300
+        test-on-borrow: true
+        test-on-return: true
+  mq:
+    endpoints: ${MQ_ENDPOINTS:rmq-cn-jte44jhp80h.cn-hangzhou.rmq.aliyuncs.com:8080}
+    topic: ${MQ_TOPIC:TopicA}
+    group: ${MQ_GROUP:Group1}
+    namespace: ${MQ_NAMESPACE:rmq-cn-jte44jhp80h}
+    tag: ${MQ_TAG:*}
+    accessKey: ${MQ_ACCESS_KEY:qxHyA4y77R4y6zB8}
+    accessSecret: ${MQ_ACCESS_SECRET:9887j9gPRnTXK9ef}
+

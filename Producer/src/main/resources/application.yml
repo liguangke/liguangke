@@ -1,5 +1,7 @@
 server:
   port: 8081
+  servlet:
+    context-path: /producer
 
 spring:
   application:
@@ -10,3 +12,11 @@ spring:
         server-addr: 127.0.0.1:8848 #配置Nacos地址
 #        server-addr: ${NACOS_ADDR:192.168.0.248:8848} #配置Nacos地址
 #        ip: ${CONSUMER_IP:172.16.180.9}
+  mq:
+    endpoints: ${MQ_ENDPOINTS:rmq-cn-jte44jhp80h.cn-hangzhou.rmq.aliyuncs.com:8080}
+    topic: ${MQ_TOPIC:TopicA}
+    group: ${MQ_GROUP:Group1}
+    namespace: ${MQ_NAMESPACE:rmq-cn-jte44jhp80h}
+    tag: ${MQ_TAG:messageTag}
+    accessKey: ${MQ_ACCESS_KEY:qxHyA4y77R4y6zB8}
+    accessSecret: ${MQ_ACCESS_SECRET:9887j9gPRnTXK9ef}
