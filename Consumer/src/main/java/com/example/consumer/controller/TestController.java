@@ -4,6 +4,7 @@ package com.example.consumer.controller;
 import com.alibaba.arms.tracing.Span;
 import com.alibaba.arms.tracing.Tracer;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.apis.ClientConfiguration;
 import org.apache.rocketmq.client.apis.ClientException;
 import org.apache.rocketmq.client.apis.ClientServiceProvider;
@@ -27,9 +28,9 @@ import java.time.Duration;
  */
 @RestController
 @RequiredArgsConstructor
+@Slf4j
 public class TestController {
 
-    private static final Logger log = LoggerFactory.getLogger(TestController.class);
     public final RestTemplate restTemplate;
 //    public final JedisPool myJedisPool;
 
@@ -38,6 +39,8 @@ public class TestController {
         if ("error".equals(name)) {
             throw new RuntimeException("error");
         }
+
+
         Span span = Tracer.builder().getSpan();   //此处未创建新的Span。
         String traceId = span.getTraceId();
         String rpcId = span.getRpcId();
@@ -59,7 +62,7 @@ public class TestController {
 //            jedis.set(key, "test");
 //        }else {
 //            jedis.set("foo10", "bar");
-//            System.out.println(jedis.get("foo10"));
+//            log.info(jedis.get("foo10"));
 //        }
 //        return "success";
 //    }

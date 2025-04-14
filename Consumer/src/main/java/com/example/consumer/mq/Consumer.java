@@ -8,6 +8,8 @@ import org.apache.rocketmq.client.apis.consumer.ConsumeResult;
 import org.apache.rocketmq.client.apis.consumer.FilterExpression;
 import org.apache.rocketmq.client.apis.consumer.FilterExpressionType;
 import org.apache.rocketmq.client.apis.consumer.PushConsumer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,6 +28,7 @@ import java.util.Collections;
 @Configuration
 public class Consumer {
 
+    private static final Logger log = LoggerFactory.getLogger(Consumer.class);
     /**
      * 实例接入点，从控制台实例详情页的接入点页签中获取。
      * 如果是在阿里云ECS内网访问，建议填写VPC接入点。
@@ -52,7 +55,7 @@ public class Consumer {
     @Value("${spring.mq.accessSecret}")
     private String accessSecret;
 
-//    @Bean("myConsumer")
+    @Bean("myConsumer")
     public PushConsumer init() throws ClientException {
 
         final ClientServiceProvider provider = ClientServiceProvider.loadService();
@@ -85,10 +88,9 @@ public class Consumer {
                 //设置消费监听器。
                 .setMessageListener(messageView -> {
                     //处理消息并返回消费结果。
-                    // LOGGER.info("Consume message={}", messageView);
-                    System.out.println("Consume Message: " + messageView);
+                    log.info("Receive message: {}", messageView);
                     ByteBuffer body = messageView.getBody();
-                    System.out.println("Message Body: " + StandardCharsets.UTF_8.decode(body));
+                    log.info("Message Body: {}", StandardCharsets.UTF_8.decode(body));
                     //消费确认
                     return ConsumeResult.SUCCESS;
                 })

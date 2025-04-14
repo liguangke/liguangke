@@ -15,8 +15,7 @@ spring:
   mq:
     endpoints: ${MQ_ENDPOINTS:rmq-cn-jte44jhp80h.cn-hangzhou.rmq.aliyuncs.com:8080}
     topic: ${MQ_TOPIC:TopicA}
-    group: ${MQ_GROUP:Group1}
     namespace: ${MQ_NAMESPACE:rmq-cn-jte44jhp80h}
-    tag: ${MQ_TAG:messageTag}
+    tag: ${MQ_TAG:tag}
     accessKey: ${MQ_ACCESS_KEY:qxHyA4y77R4y6zB8}
     accessSecret: ${MQ_ACCESS_SECRET:9887j9gPRnTXK9ef}

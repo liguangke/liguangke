@@ -33,8 +33,6 @@ public class MyProducer {
     private String topic;
     @Value("${spring.mq.namespace}")
     private String namespace;
-    @Value("${spring.mq.tag}")
-    private String tag;
     @Value("${spring.mq.accessKey}")
     private String accessKey;
     @Value("${spring.mq.accessSecret}")
